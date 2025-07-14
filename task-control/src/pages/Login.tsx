@@ -2,8 +2,55 @@ import "./Login.css";
 import backgroundImage from "../assets/background-login-register.png";
 import gogoleIcon from "../assets/google-icon.png";
 import githubIcon from "../assets/github-icon.png";
+import { useState, useEffect } from "react";
+import { login, debugLocalStorage, validateToken } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    debugLocalStorage();
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    try {
+       await login(email, senha);
+
+      // Verifica se o token foi salvo corretamente
+      if (validateToken()) {
+        navigate("/dashboard");
+      } else {
+        setError("Erro ao salvar dados de autenticação. Tente novamente.");
+      }
+
+      debugLocalStorage();
+    } catch (error: any) {
+      if (error.response?.status === 401) {
+        setError("Email ou senha incorretos");
+      } else if (error.response?.status === 400) {
+        setError("Dados inválidos");
+      } else if (
+        error.code === "NETWORK_ERROR" ||
+        error.message.includes("Network Error")
+      ) {
+        setError("Erro de conexão. Verifique se o servidor está rodando.");
+      } else {
+        setError("Erro interno. Tente novamente mais tarde.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-left">
@@ -43,19 +90,35 @@ export default function Login() {
         </p>
         <p className="subtitle">Entre na sua conta</p>
 
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleLogin}>
+          {error && <div className="error-message">{error}</div>}
+
           <div className="container-login-form">
             <label htmlFor="email">E-mail</label>
-            <input type="email" id="email" placeholder="usuario@usuario.com" />
+            <input
+              type="email"
+              id="email"
+              placeholder="usuario@usuario.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
 
           <div className="container-login-form">
             <label htmlFor="password">Senha</label>
-            <input type="password" id="password" placeholder="***********" />
+            <input
+              type="password"
+              id="password"
+              placeholder="***********"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+            />
           </div>
 
-          <button type="submit" className="login-button">
-            LOGIN
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "ENTRANDO..." : "LOGIN"}
           </button>
 
           <div className="social-login">
