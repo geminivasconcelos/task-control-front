@@ -55,58 +55,7 @@ const CreateTaskModal: React.FC<Props> = ({ isOpen, onClose, onSave }) => {
         <div className="modal-form">
           <div className="form-group">
             <label>Nome</label>
-            <input name="name" value={task.name} onChange={handleChange} />
-          </div>
-
-          <div className="form-group">
-            <label>Status</label>
-            <select name="status" value={task.status} onChange={handleChange}>
-              <option value="TODO">TODO</option>
-              <option value="DOING">DOING</option>
-              <option value="DONE">DONE</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>Prioridade</label>
-            <select
-              name="priority"
-              value={task.priority}
-              onChange={handleChange}
-            >
-              <option value="Baixa">Baixa</option>
-              <option value="Média">Média</option>
-              <option value="Alta">Alta</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>Data de Início</label>
-            <input
-              type="date"
-              name="startDate"
-              value={task.startDate}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Data de Fim</label>
-            <input
-              type="date"
-              name="endDate"
-              value={task.endDate}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group full">
-            <label>Descrição</label>
-            <textarea
-              name="description"
-              value={task.description}
-              onChange={handleChange}
-            />
+            <input name="name" value={task.name} onChange={handleChange} placeholder="Digite o nome da task" />
           </div>
 
           <div className="form-group">
@@ -114,6 +63,61 @@ const CreateTaskModal: React.FC<Props> = ({ isOpen, onClose, onSave }) => {
             <input
               name="category"
               value={task.category}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="container-dates-task">
+            <div className="form-group">
+              <label>Data de Início</label>
+              <input
+                type="date"
+                name="startDate"
+                value={task.startDate}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Data de Fim</label>
+              <input
+                type="date"
+                name="endDate"
+                value={task.endDate}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <div className="container-dates-task">
+            <div className="form-group">
+              <label>Status</label>
+              <select name="status" value={task.status} onChange={handleChange}>
+                <option value="TODO">TODO</option>
+                <option value="DOING">DOING</option>
+                <option value="DONE">DONE</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Prioridade</label>
+              <select
+                name="priority"
+                value={task.priority}
+                onChange={handleChange}
+              >
+                <option value="Baixa">Baixa</option>
+                <option value="Média">Média</option>
+                <option value="Alta">Alta</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="form-group full">
+            <label>Descrição</label>
+            <textarea
+              name="description"
+              value={task.description}
               onChange={handleChange}
             />
           </div>

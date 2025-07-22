@@ -26,9 +26,15 @@
 }
 
 .modal-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+}
+
+.container-dates-task{ 
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .form-group {
@@ -43,12 +49,16 @@
 label {
   font-weight: 500;
   margin-bottom: 4px;
+  font-size: 12px;
+    color: #333;
 }
 
 input, select, textarea {
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  font-size: 12px;
+    color: #333;
 }
 
 textarea {
@@ -77,3 +87,6 @@ textarea {
   background-color: #ccc;
   color: black;
 }
+
+
+
