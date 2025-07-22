@@ -15,7 +15,11 @@ export default function Login() {
 
   useEffect(() => {
     debugLocalStorage();
-  }, []);
+    
+    if (validateToken()) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +29,7 @@ export default function Login() {
     try {
        await login(email, senha);
 
-      // Verifica se o token foi salvo corretamente
+    
       if (validateToken()) {
         navigate("/dashboard");
       } else {
