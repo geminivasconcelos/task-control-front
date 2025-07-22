@@ -1,9 +1,16 @@
-// import React from "react";
+import { useState } from "react";
 import "./Dashboard.css";
 import dashboardIcon from "../assets/imagem-dashboard.png";
 import user from "../assets/user.png";
+import CreateTaskModal from "../components/CreateTaskModal";
 
 export default function Dashboard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSave = (task: any) => {
+    console.log('Nova tarefa:', task);
+  };
+
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
@@ -28,7 +35,11 @@ export default function Dashboard() {
         <header className="dashboard-header">
           <h2>Lista de Tarefas</h2>
           <input type="text" placeholder="🔍 Pesquisar tarefa" />
-          <button className="new-task-button">+ Nova Tarefa</button>
+
+          <button className="new-task-button" onClick={() => setIsModalOpen(true)}>
+            + Nova Tarefa
+          </button>
+
           <div className="icons">
             <div className="icon-24x24">24×24</div>
             <img src={user} alt="Avatar" className="avatar" />
@@ -61,6 +72,13 @@ export default function Dashboard() {
           </div>
         </section>
       </main>
+
+        <CreateTaskModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSave={handleSave}
+      />
+
     </div>
   );
 }
