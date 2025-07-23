@@ -1,0 +1,133 @@
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.active-tab {
+  padding: 8px 16px;
+  border: 1px solid #6200ee;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background-color: #f3e8ff;
+  color: #6200ee;
+  font-weight: 600;
+  cursor: default;
+}
+
+.inactive-tab {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.no-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 12px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.upload-button {
+  background-color: #6200ee;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.remove-button {
+  background-color: #ddd;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.input-with-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.verified {
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.submit-button {
+  background-color: #6200ee;
+  color: white;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+  align-self: flex-start;
+}
