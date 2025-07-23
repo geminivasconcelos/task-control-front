@@ -3,12 +3,13 @@ import "./Dashboard.css";
 import user from "../assets/user.png";
 import CreateTaskModal from "../components/CreateTaskModal";
 import Layout from "../components/Layout";
+import Task from "../components/Task";
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSave = (task: any) => {
-    console.log('Nova tarefa:', task);
+    console.log("Nova tarefa:", task);
   };
 
   return (
@@ -17,7 +18,10 @@ export default function Dashboard() {
         <h2>TO-DO LIST</h2>
         <input type="text" placeholder="🔍 Search task" />
 
-        <button className="new-task-button" onClick={() => setIsModalOpen(true)}>
+        <button
+          className="new-task-button"
+          onClick={() => setIsModalOpen(true)}
+        >
           + New Task
         </button>
 
@@ -28,29 +32,7 @@ export default function Dashboard() {
       </header>
 
       <section className="task-list">
-        <div className="task-card selected">
-          <strong>Aula: Laboratório de Programação Web</strong>
-          <p>20:20PM–22:10PM</p>
-          <p>ICC II - UFBA</p>
-          <p>UFBA</p>
-          <span className="eye-icon">👁️</span>
-        </div>
-
-        <div className="task-card">
-          <strong>Aula: Laboratório de Programação Web</strong>
-          <p>20:20PM–22:10PM</p>
-          <p>ICC II - UFBA</p>
-          <p>UFBA</p>
-          <span className="eye-icon">👁️</span>
-        </div>
-
-        <div className="task-card">
-          <strong>Aula: Laboratório de Programação Web</strong>
-          <p>20:20PM–22:10PM</p>
-          <p>ICC II - UFBA</p>
-          <p>UFBA</p>
-          <span className="eye-icon">👁️</span>
-        </div>
+        <Task />
       </section>
 
       <CreateTaskModal
