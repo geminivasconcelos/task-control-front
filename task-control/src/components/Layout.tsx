@@ -33,6 +33,7 @@ export default function Layout({ children }: LayoutProps) {
           >
             📋 Tasks
           </button>
+          <button className="menu-item">🎓 Courses</button>
           <button className="menu-item">📂 Category</button>
           <button className="menu-item">📅 Calendar</button>
         </nav>
