@@ -68,6 +68,15 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({
     if (e.key === "Enter") setEditing(false);
   };
 
+  const hasChanges =
+    editTitle !== title ||
+    editTime !== time ||
+    editLocation !== location ||
+    editPriority !== priority ||
+    editStatus !== status ||
+    editDescription !== description ||
+    editPlace !== place;
+
   return (
     <div className="task-details-overlay">
       <div className="task-details">
@@ -217,9 +226,12 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({
             </div>
           )}
         </div>
-        <div className="task-details-save-container">
-          <button className="save-button" onClick={handleSave}>Salvar</button>
-        </div>
+
+        {hasChanges && (
+          <div className="task-details-save-container">
+            <button className="save-button" onClick={handleSave}>Salvar</button>
+          </div>
+        )}
       </div>
     </div>
   );
