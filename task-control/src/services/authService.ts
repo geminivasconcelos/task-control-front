@@ -1,13 +1,13 @@
-import axios from "axios";
+// import axios from "axios";
+import api from "../api/api";
 
-
-const api = axios.create({
-  baseURL: "/api",
-  timeout: 10000,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+// const api = axios.create({
+//   baseURL: "/api",
+//   timeout: 10000,
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
 
 api.interceptors.request.use(
   (config) => {
@@ -21,8 +21,6 @@ api.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
-
 
 export const login = async (email: string, password: string) => {
   console.log("Chave Secreta:", password);
