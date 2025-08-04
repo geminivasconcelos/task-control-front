@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Settings from "./pages/Settings";
+import Courses from "./pages/Courses";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -28,6 +29,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Settings />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/courses"
+        element={
+          <ProtectedRoute>
+            <Courses />
           </ProtectedRoute>
         }
       />
