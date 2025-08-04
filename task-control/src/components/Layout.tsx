@@ -11,11 +11,15 @@ export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   const goToDashboard = () => {
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
   const goToSettings = () => {
-    navigate('/settings');
+    navigate("/settings");
+  };
+
+  const goToCourses = () => {
+    navigate("/courses");
   };
 
   return (
@@ -27,21 +31,32 @@ export default function Layout({ children }: LayoutProps) {
         </div>
 
         <nav className="menu">
-          <button 
-            className={`menu-item ${location.pathname === '/dashboard' ? 'active' : ''}`}
+          <button
+            className={`menu-item ${
+              location.pathname === "/dashboard" ? "active" : ""
+            }`}
             onClick={goToDashboard}
           >
             📋 Tasks
           </button>
-          <button className="menu-item">🎓 Courses</button>
+          <button
+            className={`menu-item ${
+              location.pathname === "/courses" ? "active" : ""
+            }`}
+            onClick={goToCourses}
+          >
+            🎓 Courses
+          </button>
           <button className="menu-item">📂 Category</button>
           <button className="menu-item">📅 Calendar</button>
         </nav>
 
         <div className="bottom-menu">
           <button className="menu-item">❓ Help</button>
-          <button 
-            className={`menu-item ${location.pathname === '/settings' ? 'active' : ''}`}
+          <button
+            className={`menu-item ${
+              location.pathname === "/settings" ? "active" : ""
+            }`}
             onClick={goToSettings}
           >
             ⚙️ Settings
@@ -49,9 +64,7 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </aside>
 
-      <main className="main-content">
-        {children}
-      </main>
+      <main className="main-content">{children}</main>
     </div>
   );
 }
