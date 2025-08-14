@@ -1,5 +1,5 @@
-import React from 'react';
-import './CourseCard.css';
+import React from "react";
+import "./CourseCard.css";
 
 interface CourseCardProps {
   title: string;
@@ -13,7 +13,13 @@ interface CourseCardProps {
   };
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ title, teacher, level, completed, stats }) => {
+const CourseCard: React.FC<CourseCardProps> = ({
+  title,
+  teacher,
+  level,
+  completed,
+  stats,
+}) => {
   return (
     <div className="course-card">
       <div className="header">
@@ -22,9 +28,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ title, teacher, level, complete
         <p className="level">{level}</p>
       </div>
       <div className="stats">
-        <span>{stats.videos} 📺</span>
-        <span>{stats.hours} ⏱️</span>
-        <span>{stats.activities} 📄</span>
+        <span>📕{stats.videos} </span>
+        <span>📗{stats.hours} </span>
+        <span>📝{stats.activities} </span>
       </div>
       <div className="progress-bar">
         <div className="progress" style={{ width: `${completed}%` }}></div>
